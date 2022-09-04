@@ -46,4 +46,8 @@ const web3 = require("@solana/web3.js");
   page++;
   let myNFTsPage2 = await NFTs.getNFTsByOwner(conn, walletAddr, page, perPage, cacheTtlMins);
   console.log('myNFTsPage2', myNFTsPage2);
+
+  let mintHashes;
+  mintHashes = await NFTs.getMintHashesFromCandyMachine(connection, "DPsW9zSWh94J3865U712SzdzyYD1Xf2VZaaohRH1fToV", 1);
+  console.log(mintHashes, mintHashes.length)
 })();

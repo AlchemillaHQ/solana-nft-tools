@@ -1,5 +1,5 @@
 {
-  "name": "@primenums/solana-nft-tools",
+  "name": "@alchemilla/solana-nft-tools",
   "version": "0.2.2",
   "description": "Collection of helper functions for interacting with Solana NFTs.",
   "main": "lib/index.js",
@@ -15,14 +15,15 @@
     "nft",
     "blockchain"
   ],
-  "author": "primenums",
+  "author": "alchemilla",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/primenumsdev/solana-nft-tools/issues"
+    "url": "https://github.com/alchemilla/solana-nft-tools/issues"
   },
-  "homepage": "https://github.com/primenumsdev/solana-nft-tools#readme",
+  "homepage": "https://github.com/alchemilla/solana-nft-tools#readme",
   "dependencies": {
-    "@solana/web3.js": "^1.29.2",
+    "@metaplex-foundation/js": "^0.15.0",
+    "@solana/web3.js": "^1.56.2",
     "node-fetch": "^2.6.7"
   }
 }
