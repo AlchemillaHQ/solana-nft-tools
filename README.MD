@@ -2,26 +2,26 @@
 
 Collection of helper functions for interacting with Solana NFTs.
 
-[![NPM](https://nodei.co/npm/@primenums/solana-nft-tools.png)](https://npmjs.org/package/@primenums/solana-nft-tools)
+[![NPM](https://nodei.co/npm/@alchemilla/solana-nft-tools.png)](https://npmjs.org/package/@alchemilla/solana-nft-tools)
 
-![NPM Package version](https://img.shields.io/npm/v/@primenums/solana-nft-tools)
-![NPM Downloads](https://img.shields.io/npm/dw/@primenums/solana-nft-tools)
+![NPM Package version](https://img.shields.io/npm/v/@alchemilla/solana-nft-tools)
+![NPM Downloads](https://img.shields.io/npm/dw/@alchemilla/solana-nft-tools)
 
 
 # Install
 
-`npm i --save @primenums/solana-nft-tools`
+`npm i --save @alchemilla/solana-nft-tools`
 
 # Examples
 
 You can find these examples [here](./examples/index.js).
 
 ```JS
-const NFTs = require('solana-nft-tools');
+const NFTs = require('@alchemilla/solana-nft-tools');
 const web3 = require("@solana/web3.js");
 
 (async () => {
-
+  
   // Create connection
   const conn = new web3.Connection(
     web3.clusterApiUrl('mainnet-beta'),
@@ -29,12 +29,16 @@ const web3 = require("@solana/web3.js");
   );
 
   // Get all mint tokens (NFTs) from your wallet
-  const walletAddr = 'EaeLkUWHDXBRcLfvBXhczgavxPtCBASYYXB9rBrYN1b6';
+  const walletAddr = 'Bv26RX9m6tt99uxFoacNi841Dj4J4udGjYMdLitVMofE';
   let mints = await NFTs.getMintTokensByOwner(conn, walletAddr);
   console.log('mints', mints);
 
   // Now we can get some NFT information (metadata)
   let myNFT = await NFTs.getNFTByMintAddress(conn, mints[0]);
+  console.log('myNFT', myNFT);
+
+  // If token is invalid or can't find parse NFT metadata, returns response with an error
+  myNFT = await NFTs.getNFTByMintAddress(conn, "CkV4VDyvtwPudc8qJCUx5C6fDHTjPz261kWsEQ7aBef8");
   console.log('myNFT', myNFT);
 
   // Additional function to get all NFTs from wallet address
@@ -53,18 +57,17 @@ const web3 = require("@solana/web3.js");
 
   // Or use this function with pagination and caching
   let page = 1;
-  const perPage = 10;
-  const cacheTtlMins = 1; // Will keep the mint tokens cached for 1 minute
+  const perPage = 5;
+  const cacheTtlMins = 0.1; // Will keep the mint tokens cached for 6 seconds
   let myNFTsPage1 = await NFTs.getNFTsByOwner(conn, walletAddr, page, perPage, cacheTtlMins);
   console.log('myNFTsPage1', myNFTsPage1);
 
-  // the second page loads faster, if requested within cacheTtlMins
   page++;
   let myNFTsPage2 = await NFTs.getNFTsByOwner(conn, walletAddr, page, perPage, cacheTtlMins);
   console.log('myNFTsPage2', myNFTsPage2);
 
-  page++;
-  let myNFTsPage3 = await NFTs.getNFTsByOwner(conn, walletAddr, page, perPage, cacheTtlMins);
-  console.log('myNFTsPage3', myNFTsPage3);
+  let mintHashes;
+  mintHashes = await NFTs.getMintHashesFromCandyMachine(connection, "DPsW9zSWh94J3865U712SzdzyYD1Xf2VZaaohRH1fToV", 1);
+  console.log(mintHashes, mintHashes.length)
 })();
 ```
