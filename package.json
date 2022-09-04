@@ -1,6 +1,6 @@
 {
   "name": "@alchemilla/solana-nft-tools",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Collection of helper functions for interacting with Solana NFTs.",
   "main": "lib/index.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/primenumsdev/solana-nft-tools.git"
+    "url": "git+https://github.com/AlchemillaHQ/solana-nft-tools.git"
   },
   "keywords": [
     "solana",
