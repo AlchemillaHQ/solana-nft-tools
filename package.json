@@ -1,6 +1,6 @@
 {
   "name": "@alchemilla/solana-nft-tools",
-  "version": "0.2.3",
+  "version": "0.2.5",
   "description": "Collection of helper functions for interacting with Solana NFTs.",
   "main": "lib/index.js",
   "scripts": {
